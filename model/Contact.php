@@ -1,7 +1,7 @@
 <?php
 require_once("db.php");
 
-class wsImplementation{
+class Contact{
 	private $db = null;
 	
 	protected function get_db(){
@@ -71,49 +71,6 @@ class wsImplementation{
 		
 		$sql = "delete from contact where contact_id=" . $id;
 		
-		$result = $this->get_db()->execute($sql);
-		return $result;
-	}
-	
-	public function get_phones($contact_id){
-		$sql = "select * from phone where contact_id=".$contact_id;
-
-		$rows = $this->get_db()->query($sql);
-		
-		return $rows;
-	}
-	
-	public function add_phone($contact_id, $type_id, $number, $comment){
-		
-		$sql = "insert into phone";
-		$sql .= " (contact_id, type_id, phone_number, phone_comment)";
-		$sql .= " values('".$contact_id."', '".$type_id."', '".$number."', '".$comment."')";
-
-		$result = $this->get_db()->execute($sql);
-		if($result){
-			return $this->get_db()->get_last_id();
-		}
-		
-		return $result;
-	}
-	
-	public function update_phone($id, $type_id, $phone, $comment){
-		
-		$sql = "update phone set";
-		$sql .= " type_id = ".$type_id.",";
-		$sql .= " phone_number = '".$phone."',";
-		$sql .= " phone_comment = '".$comment."'";
-		$sql .= " where phone_id=" . $id;
-		
-		$result = $this->get_db()->execute($sql);
-		
-		return $result;
-	}
-	
-	public function delete_phone($id){
-		
-		$sql = "delete from phone where phone_id=" . $id;
-
 		$result = $this->get_db()->execute($sql);
 		return $result;
 	}

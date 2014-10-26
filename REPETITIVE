@@ -1,0 +1,7 @@
+Push to GitHub - https://github.com/gboban/phpjsonrestserver.git
+git push origin master
+
+Push to googlecode - https://gboban70@code.google.com/p/phpjsonrestserver/
+git push googlecode master:master
+
+Update googlecode wiki

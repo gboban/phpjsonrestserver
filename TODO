@@ -1,1 +1,7 @@
-Place for TODO lists for future updates
+Add licenses
+Simplify Contact class - doesn't need to have db access
+Add PHPUnit tests
+Tests for the service part?
+Rethink errors and exceptions
+verbose response - wrap response in status object? (success/error, code, message, data->)
+++ beside interfaces add listeners - where we can hook classes to log to json storage etc.

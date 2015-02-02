@@ -1,4 +1,4 @@
-Add licenses
++ Add licenses
 Simplify Contact class - doesn't need to have db access
 Add PHPUnit tests
 Tests for the service part?

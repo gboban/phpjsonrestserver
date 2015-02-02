@@ -64,6 +64,78 @@ class CMYSQLi{
 		return $rows;
 	}
 	
+	public function execute_stmt($sql, $param_types, $param){
+		$stmt = $this->conncetion->prepare($sql);
+		if(!$result){
+			trigger_error(
+			"Error prepering statement..." . $sql,
+			E_USER_ERROR
+			);
+		}
+		
+		$success = $stmt->bind_param($param_types, $params);
+		if(!$success){
+			trigger_error(
+			"Error binding params..." . $sql,
+			E_USER_ERROR
+			);
+		}
+		
+		$success = $stmt->execute();
+		if(!$success){
+			trigger_error(
+			"Error executing..." . $sql,
+			E_USER_ERROR
+			);
+		}
+		
+		return $success;
+	}
+	
+	public function query_stmt($sql, $param_types, $param){
+		$rows = array();
+		//print("<hr />".$sql."<hr />");
+		//$rows = array('sql'=>$sql);
+			$stmt = $this->conncetion->prepare($sql);
+		if(!$result){
+			trigger_error(
+			"Error prepering statement..." . $sql,
+			E_USER_ERROR
+			);
+		}
+		
+		$success = $stmt->bind_param($param_types, $params);
+		if(!$success){
+			trigger_error(
+			"Error binding params..." . $sql,
+			E_USER_ERROR
+			);
+		}
+		
+		$success = $stmt->execute();
+		if(!$success){
+			trigger_error(
+			"Error executing..." . $sql,
+			E_USER_ERROR
+			);
+		}
+		
+		$result = $stmt->get_result();
+		if(!$result){
+			trigger_error(
+			"Error executing query..." . $sql,
+			E_USER_ERROR
+			);
+		}
+		
+		while($row = $result->fetch_assoc()){
+			array_push($rows, $row);
+		}
+		$result->free();
+	
+		return $rows;
+	}
+	
 	public function execute($sql){
 		$rows = array();
 		$result = $this->connection->query($sql);
